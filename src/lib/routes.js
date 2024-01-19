@@ -15,13 +15,7 @@ import Login from "../components/Auth/Login.jsx";
 export const ROOT = "/";
 export const LOGIN = "/login";
 
-/* export const ABOUT = "/about";
-export const HOME = "/home";
-export const CONTACT = "/contact";
-export const LOGIN = "/login";
-export const WORK = "/work";
-export const SERVICES = "/services";
-export const PROJECT = "/project/:id"; */
+
 
 // Protected route
 export const PROTECTED = "/protected";
@@ -30,15 +24,7 @@ export const ADD_STOCK = "/protected/add_stock";
 export const EXPIRED_PRODUCTS = "/protected/expired_products";
 export const ADD_BUG_REPORT = "/protected/add_bug_report";
 
-/* 
-export const MESSAGES = "/protected/messages";
-export const MESSAGE = "/protected/message/:id";
-export const EDIT = "/protected/edit/:id";
-export const DELETE = "/protected/delete/:id";
-export const PROJECTS_ADMIN = "/protected/projects/";
-export const ADD_PROJECT = "/protected/add/";
-export const ADMIN = "/protected/admin";
- */
+
 
 
 // create routes
@@ -51,18 +37,6 @@ export const router = createBrowserRouter([
             path: LOGIN,
             element: <Login />
         },
-        /* {
-          path: HOME,
-          element: <Home />
-        },
-        {
-            path: ADD_STOCK,
-            element: <AddStock />
-        },
-        {
-            path: EXPIRED_PRODUCTS,
-            element: <ExpiredProducts />
-        }, */
       ]
     },
     { 

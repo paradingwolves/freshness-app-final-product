@@ -1,9 +1,13 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../layout.css';
+import { useAuth } from '../../../hooks/auth';
+import useFirebaseLogout from '../../../hooks/useLogout';
 
 
 const Header = () => {
+    const  { user } = useAuth(); // get user token
+    const { logout } = useFirebaseLogout(); // logout hook
   return (
     <nav className="navbar navbar-expand-lg text-center navbar-dark bg-dark">
         <div className="container">
@@ -23,6 +27,9 @@ const Header = () => {
                             <li><a href="/protected/add_stock">Add Stock</a></li>
                             <li><a href="/protected/expired_products">Expired Products</a></li>
                             <li><a href="/protected/add_bug_report">Submit Bug Report</a></li>
+                            
+                            <li className='nav-link' onClick={logout}>Logout</li>
+                           
                         </ul>
                     </div>
                 </div>
@@ -42,6 +49,9 @@ const Header = () => {
                     <li className="nav-item">
                         <a className="nav-link" href="/protected/add_bug_report">Submit Bug Report</a>
                     </li>
+                   
+                        <li className='nav-link' onClick={logout}>Logout</li>
+                    
                 </ul>
             </div>
         </div>
