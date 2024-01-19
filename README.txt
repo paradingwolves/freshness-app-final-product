@@ -7,6 +7,7 @@ npm packages installed:
     - npm i react-router-dom
     - npm i date-fns
     - npm i quagga
+    - npm i react-firebase-hooks
 
 
 ------------------------------------------------------------------
