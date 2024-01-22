@@ -1,9 +1,10 @@
 import React from 'react'
+import StockTable from '../StockTable/StockTable'
 
 const Home = () => {
   return (
     <div>
-      hello
+      <StockTable />
     </div>
   )
 }

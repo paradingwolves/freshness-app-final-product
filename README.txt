@@ -28,3 +28,4 @@ npm packages installed:
     Date Modified: January 22, 2024
 ------------------------------------------------------------------
     1. Recreate the Add Stock Component and related hooks
+    2. Stores can now view their own data as well as add their own data

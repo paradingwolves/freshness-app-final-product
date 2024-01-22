@@ -138,16 +138,6 @@ const AddStock = () => {
     }
   }, [scanningEnabled]);
 
-  useEffect(() => {
-    const fetchStockData = async () => {
-      const stockRef = collection(db, 'Stock');
-      const querySnapshot = await getDocs(stockRef);
-      const stockDataArray = querySnapshot.docs.map((doc) => doc.data());
-      setStockData(stockDataArray);
-    };
-
-    fetchStockData();
-  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -399,20 +389,13 @@ const AddStock = () => {
               <label htmlFor="animal" className="form-label fw-bold fs-5">
                 Animal Type
               </label>
-              <select
-                className="form-select"
-                id="animal"
-                name="animal"
+              <input
+                type="text"
+                className="form-control"
                 value={matchingItems[0].animal}
+                required
                 disabled
-              >
-                <option value="Cat">Cat</option>
-                <option value="Dog">Dog</option>
-                <option value="Small Animal">Small Animal</option>
-                <option value="Bird">Bird</option>
-                <option value="Fish">Fish</option>
-                <option value="Reptile">Reptile</option>
-              </select>
+              />
             </div>
           ) : (
             <div className="mb-3">
