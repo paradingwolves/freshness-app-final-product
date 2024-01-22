@@ -9,7 +9,7 @@ export function useAuth() {
     const [user, setUser] = useState(null);
 
     // Log the signed-in user
-    /* console.log("Signed-in user:", authUser); */
+    console.log("Signed-in user:", authUser);
 
     // Every time authLoading changes, the useEffect hook runs
     useEffect(() => {

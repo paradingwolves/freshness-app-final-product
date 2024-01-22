@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import useFirebaseEmailLogin from '../../hooks/useLogin';
 
 const Login = () => {
@@ -12,7 +13,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container my-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card">
@@ -49,6 +50,10 @@ const Login = () => {
                   Login
                 </button>
               </form>
+              {/* "Don't have an account?" link */}
+              <p className="mt-3 text-center">
+                Don't have an account? <Link to="/register">Register here</Link>.
+              </p>
             </div>
           </div>
         </div>

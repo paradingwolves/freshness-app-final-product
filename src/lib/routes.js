@@ -7,13 +7,16 @@ import AdminIndex from "../components/Auth/AdminIndex.jsx";
 import AddStock from "../components/AddStock/AddStock.jsx";
 import ExpiredProducts from "../components/ExpiredProducts/ExpiredProducts.jsx";
 import SubmitBugReport from "../components/BugReports/SubmitBugReport.jsx";
+import SeedStoreDB from "../components/Layout/SideBar/SeedStoreDB.jsx";
 
 import Error404 from "../components/Error404/Error404.jsx";
 
 import Login from "../components/Auth/Login.jsx";
+import RegisterStore from "../components/Auth/RegisterStore.jsx";
 
 export const ROOT = "/";
 export const LOGIN = "/login";
+export const REGISTER = "/register";
 
 
 
@@ -23,6 +26,7 @@ export const HOME = "/protected/home";
 export const ADD_STOCK = "/protected/add_stock";
 export const EXPIRED_PRODUCTS = "/protected/expired_products";
 export const ADD_BUG_REPORT = "/protected/add_bug_report";
+export const SEED_DATA = "/protected/seed";
 
 
 
@@ -37,6 +41,10 @@ export const router = createBrowserRouter([
             path: LOGIN,
             element: <Login />
         },
+        {
+          path: REGISTER,
+          element: <RegisterStore />
+      },
       ]
     },
     { 
@@ -59,6 +67,10 @@ export const router = createBrowserRouter([
             path: ADD_BUG_REPORT,
             element: <SubmitBugReport />
         },
+        {
+          path: SEED_DATA,
+          element: <SeedStoreDB />
+      },
       ],
   },
     { path: "*", element: <Error404 /> }
