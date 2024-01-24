@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import { Link, useNavigate } from 'react-router-dom'; // Import Link for navigation
 import useFirebaseEmailLogin from '../../hooks/useLogin';
 
 const Login = () => {
+  const navigate = useNavigate();
   const { login } = useFirebaseEmailLogin();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,6 +11,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     await login(email, password);
+      navigate('/protected/home');
   };
 
   return (
