@@ -31,6 +31,7 @@ const useRegisterStore = () => {
         email,
         id: authUser.uid,
         store_number: Number(storeNumber),
+        initialized: false
        
       });
 

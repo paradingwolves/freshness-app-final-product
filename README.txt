@@ -29,3 +29,12 @@ npm packages installed:
 ------------------------------------------------------------------
     1. Recreate the Add Stock Component and related hooks
     2. Stores can now view their own data as well as add their own data
+
+------------------------------------------------------------------
+    Date Modified: January 24, 2024
+------------------------------------------------------------------
+    1. Stores can no longer seed their db more than once 
+        - added "initialized" field to each store to avoid double seed
+    2. users are navigated to home screen after logging in or when they access the root router
+    3. Stores can now remove their expired products from the db
+    4. Fixed bug where animal group was not added with product

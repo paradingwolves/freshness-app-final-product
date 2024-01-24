@@ -88,8 +88,19 @@ const AddStock = () => {
       } catch (error) {
         console.error('Error accessing rear camera:', error);
       } finally {
+        // Check if there are no matching items
         if (matchingItems.length === 0) {
+          // Handle the case when there are no matching items
           setIsAlertOpen(true);
+  
+          // Set a default animal type or handle it as per your requirements
+          setFormData({
+            ...formData,
+            editedAnimal: 'DefaultAnimalType',
+          });
+        } else {
+          // There are matching items, you can handle it as needed
+          setIsAlertOpen(false);
         }
       }
     };
@@ -212,7 +223,7 @@ const AddStock = () => {
             expiry_date: expiryTimestamp, // Use the timestamp in milliseconds
             item_number: largestExpiryItem.item_number,
             barcode_number: Number(largestExpiryItem.barcode_number),
-            animal: largestExpiryItem.animal,
+            animal: formData.editedAnimal,
           };
   
           const inventoryRef = collection(userStoreRef, 'inventory');
