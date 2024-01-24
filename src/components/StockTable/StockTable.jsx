@@ -17,7 +17,7 @@ const StockTable = () => {
     const [shortenName, setShortenName] = useState(false);
     const { updateQuantityToZero, isLoading } = useUpdateQuantityToZero();
     const [selectedProductIndex, setSelectedProductIndex] = useState(null);
-    const {store} = useAuth();
+    const {user} = useAuth();
 
     const exp90days = addDays(new Date(), 90);
     const exp7days = addDays(new Date(), 7);
@@ -123,7 +123,7 @@ const StockTable = () => {
     // Delete Button
     const handleDelete = (product) => {
         // Call the updateQuantityToZero function from the hook
-        const uid = store.id;
+        const uid = user.id;
         updateQuantityToZero(uid, product.name, product.expiry_date);
     };
 
@@ -196,7 +196,7 @@ const StockTable = () => {
                             {product.item_number}
                         </div>
                         <div className={`list-cell list-cell-name ${shortenName ? 'shortened-name' : ''}`}>
-                            <Link className='text-dark text-decoration-none' to={`/edit_stock/${product.id}`}>
+                            <Link className='text-dark text-decoration-none' to={`/protected/edit_stock/${product.id}`}>
                             {getShortenedName(product)}
                             </Link>
                         </div>

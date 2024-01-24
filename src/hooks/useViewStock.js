@@ -25,11 +25,14 @@ const useAllStockData = () => {
 
           const unsubscribe = onSnapshot(stockCollectionRef, (snapshot) => {
             const formattedData = snapshot.docs
-              .map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-                expiry_date: format(new Date(doc.data().expiry_date), 'MM/dd/yyyy'),
-              }))
+              .map((doc) => {
+                const data = doc.data();
+                return {
+                  id: doc.id,
+                  ...data,
+                  expiry_date: data.expiry_date ? format(new Date(data.expiry_date), 'MM/dd/yyyy') : null,
+                };
+              })
               .filter((item) => item.quantity > 0); // Filter items with quantity greater than 0
 
             setStockData(formattedData);
@@ -50,7 +53,6 @@ const useAllStockData = () => {
     };
 
     if (user) {
-      console.log()
       fetchStockData();
     }
 

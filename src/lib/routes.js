@@ -8,6 +8,7 @@ import AddStock from "../components/AddStock/AddStock.jsx";
 import ExpiredProducts from "../components/ExpiredProducts/ExpiredProducts.jsx";
 import SubmitBugReport from "../components/BugReports/SubmitBugReport.jsx";
 import SeedStoreDB from "../components/Layout/SideBar/SeedStoreDB.jsx";
+import EditStock from "../components/EditStock/EditStock.jsx";
 
 import Error404 from "../components/Error404/Error404.jsx";
 
@@ -27,6 +28,8 @@ export const ADD_STOCK = "/protected/add_stock";
 export const EXPIRED_PRODUCTS = "/protected/expired_products";
 export const ADD_BUG_REPORT = "/protected/add_bug_report";
 export const SEED_DATA = "/protected/seed";
+export const EDIT_STOCK = "/protected/edit_stock/:id";
+
 
 
 
@@ -70,7 +73,11 @@ export const router = createBrowserRouter([
         {
           path: SEED_DATA,
           element: <SeedStoreDB />
-      },
+        },
+        {
+          path: EDIT_STOCK,
+          element: <EditStock />
+        },
       ],
   },
     { path: "*", element: <Error404 /> }

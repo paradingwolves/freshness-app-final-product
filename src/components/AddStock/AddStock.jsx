@@ -96,7 +96,7 @@ const AddStock = () => {
           // Set a default animal type or handle it as per your requirements
           setFormData({
             ...formData,
-            editedAnimal: 'DefaultAnimalType',
+            editedAnimal: 'Cat',
           });
         } else {
           // There are matching items, you can handle it as needed
@@ -510,7 +510,7 @@ const AddStock = () => {
                 className="form-select"
                 id="animal"
                 name="editedAnimal"
-                defaultValue={formData.editedAnimal}
+                defaultValue="Cat"
                 onChange={handleInputChange}
               >
                 <option value="Cat">Cat</option>
