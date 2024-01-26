@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import useFetchExpiredStockData from '../../hooks/useFetchExpiredStock';
 import useUpdateQuantityToZero from '../../hooks/useUpdateQuantityToZero';
+import { getAuth } from 'firebase/auth';
 import './ExpiredProducts.css';
 
 const ExpiredProducts = () => {
   const { expiredStockData, loading } = useFetchExpiredStockData();
   const { updateQuantityToZero, isLoading: updateLoading } = useUpdateQuantityToZero();
+  const { currentUser } = getAuth();
   
-  
-  const handleRemoveProduct = async (name, expiryDate) => {
+  const handleRemoveProduct = async (uid, name, expiryDate) => {
     // Call the hook to update quantity to zero
-    await updateQuantityToZero(name, expiryDate);
+    await updateQuantityToZero(uid, name, expiryDate);
   };
 
   return (
@@ -52,7 +53,7 @@ const ExpiredProducts = () => {
                     <td>
                       <button
                         className="btn btn-danger"
-                        onClick={() => handleRemoveProduct(item.name, item.expiry_date)}
+                        onClick={() => handleRemoveProduct(currentUser.uid, item.name, item.expiry_date)}
                         disabled={updateLoading}
                       >
                         Remove
