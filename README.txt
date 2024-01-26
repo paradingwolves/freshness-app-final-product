@@ -39,3 +39,9 @@ npm packages installed:
     3. Stores can now remove their expired products from the db
     4. Fixed bug where animal group was not added with product
     5. Stores can edit their stock items if they input incorrect information
+
+------------------------------------------------------------------
+    Date Modified: January 26, 2024
+------------------------------------------------------------------
+    - created the ExpiredProducts component 
+    - created useFetchExpiredStock hook for the ExpiredProducts component
