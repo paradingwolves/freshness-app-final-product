@@ -45,3 +45,4 @@ npm packages installed:
 ------------------------------------------------------------------
     - created the ExpiredProducts component 
     - created useFetchExpiredStock hook for the ExpiredProducts component
+    - SubmitBugReport component Created
