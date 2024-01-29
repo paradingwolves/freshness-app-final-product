@@ -133,3 +133,14 @@
     color: #b8c4d3;
     transition: color 0.4s ease;
 }
+.storenum {
+    color:#8bbbe6ab;
+    border: 2px solid #8bbbe6ab;
+    border-radius: 4px;
+    height: 36px;
+    line-height: 30px;
+    min-width: 54px;
+    padding: 0 16px;
+    text-align: center;
+    font-weight: 600;
+}

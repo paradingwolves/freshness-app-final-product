@@ -58,17 +58,11 @@ const Header = () => {
               <li className='nav-link' onClick={logout}>Logout</li>
             )}
           </ul>
-        </div>
+          
+        </div>{user && ( <span className="storenum">Signed in as Store #{user.store_number}</span> )}
       </div>
     </nav>
-    {user && (
-        <div className="row">
-            <div className="col-8"></div>
-            <div className="col-4">
-                <p className='text-dark'>Signed in as store {user.store_number}</p>
-            </div>
-        </div>
-    )}
+    
     </>
     
   );
