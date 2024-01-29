@@ -3,6 +3,9 @@
     .mobileHidden {
         display: none !important;
     }
+    .navcontainer { justify-content:flex-start !important; }
+    .navbar-brand { margin-right: 0; }
+    .storenum { padding: 0 3px !important; min-width: none; }
 }
 /* notMobileHidden class for hiding elements that only show up on mobile. */
 @media (min-width: 992px) {

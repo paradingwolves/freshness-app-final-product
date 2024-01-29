@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <>
     <nav className="navbar navbar-expand-lg text-center navbar-dark bg-dark">
-      <div className="container">
+      <div className="container navcontainer">
         <a className="navbar-brand" href="/protected/home">
           <img src="https://www.petvalu.ca/file/general/brand-logo-petvalu_dark.svg" alt="Pet Valu Logo" height="40" />
         </a>
