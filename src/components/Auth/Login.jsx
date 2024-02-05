@@ -1,67 +1,95 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import Link for navigation
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import useFirebaseEmailLogin from '../../hooks/useLogin';
+import useFirebaseLogout from '../../hooks/useLogout';
+import { emailValidate, passwordValidate } from '../../util/form-validation';
+import { HOME } from '../../lib/routes';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+function LoginForm() {
+  const { user, error, login } = useFirebaseEmailLogin();
+  const { logout } = useFirebaseLogout();
   const navigate = useNavigate();
-  const { login } = useFirebaseEmailLogin();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    await login(email, password);
-      navigate('/protected/home');
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const handleLogin = async (data) => {
+    const { email, password } = data;
+
+    if (errors.email || errors.password) {
+      // Validation failed, handle accordingly (e.g., show error messages)
+      return;
+    }
+
+    // Validation passed, attempt to log in
+    login(email, password);
   };
 
+  useEffect(() => {
+    // Check for a successful login after a user state change
+    if (user) {
+      navigate(HOME); // Redirect to PROJECTS_ADMIN after successful login
+    }
+
+    // Check for errors and handle accordingly
+    if (error) {
+      console.error('Login failed. Please check your credentials and try again.', error);
+    }
+  }, [user, error, navigate]);
+
   return (
-    <div className="container my-5">
-      <div className="row justify-content-center">
+    <div className="container py-5">
+      <div className="row justify-content-center pt-5">
         <div className="col-md-6">
           <div className="card">
             <div className="card-body">
-              <h3 className="card-title text-center mb-4">Login</h3>
-              <form onSubmit={handleLogin}>
-                <div className="mb-3">
-                  <label htmlFor="email" className="form-label">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
+              {user ? (
+                <div>
+                  <p>Welcome, {user.email}!</p>
+                  <button onClick={() => logout()}>Logout</button>
                 </div>
-                <div className="mb-3">
-                  <label htmlFor="password" className="form-label">
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
+              ) : (
+                <div>
+                  <h2>Login</h2>
+                  <form onSubmit={handleSubmit(handleLogin)}>
+                    <div className="form-group">
+                      <label htmlFor="email">Email:</label>
+                      <input
+                        type="email"
+                        name="email"
+                        {...register('email', emailValidate)}
+                        className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                        placeholder="Enter your email"
+                      />
+                      {errors.email && (
+                        <div className="invalid-feedback">{errors.email.message}</div>
+                      )}
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="password">Password:</label>
+                      <input
+                        type="password"
+                        name="password"
+                        {...register('password', passwordValidate)}
+                        className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                        placeholder="Enter your password"
+                      />
+                      {errors.password && (
+                        <div className="invalid-feedback">{errors.password.message}</div>
+                      )}
+                    </div>
+                    <button type="submit" className="btn btn-primary my-2">
+                      Login
+                    </button>
+                  </form>
                 </div>
-                <button type="submit" className="btn btn-primary w-100">
-                  Login
-                </button>
-              </form>
-              {/* "Don't have an account?" link */}
-              <p className="mt-3 text-center">
-                Don't have an account? <Link to="/register">Register here</Link>.
-              </p>
+              )}
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default Login;
+export default LoginForm;

@@ -6,7 +6,9 @@ const Error404 = () => {
   return (
     <div>
       <Header />
-        Error 404
+        <div className="container">
+          Error 404
+        </div>
       <Footer />
     </div>
   )
