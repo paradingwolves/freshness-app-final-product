@@ -41,11 +41,9 @@ const SeedStoreDB = () => {
             // Iterate through your JSON data and add each object as a document in the "inventory" collection
             for (const item of jsonData) {
               try {
-                // Generate a unique ID for each document
-                const id = uuidv4();
-
+  
                 // Create a reference to the document in the "inventory" collection
-                const inventoryDocRef = doc(inventoryCollectionRef, id);
+                const inventoryDocRef = doc(inventoryCollectionRef);
 
                 // Set the document data with the JSON item and additional properties (if needed)
                 await setDoc(inventoryDocRef, {
