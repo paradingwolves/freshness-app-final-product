@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import useRegisterStore from '../../hooks/useRegisterStore';
+import { LOGIN } from '../../lib/routes';
 
 const RegisterStore = () => {
   const { registerStore, error } = useRegisterStore();
@@ -84,7 +85,7 @@ const RegisterStore = () => {
               </form>
               {/* "Already have an account?" link */}
               <p className="mt-3 text-center">
-                Already have an account? <Link to="/login">Login here</Link>.
+                Already have an account? <Link to={LOGIN}>Login here</Link>.
               </p>
             </div>
           </div>

@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form';
 import useFirebaseEmailLogin from '../../hooks/useLogin';
 import useFirebaseLogout from '../../hooks/useLogout';
 import { emailValidate, passwordValidate } from '../../util/form-validation';
-import { HOME } from '../../lib/routes';
-import { useNavigate } from 'react-router-dom';
+import { HOME, REGISTER } from '../../lib/routes';
+import { useNavigate, Link } from 'react-router-dom';
+import RegisterStore from './RegisterStore';
 
 function LoginForm() {
   const { user, error, login } = useFirebaseEmailLogin();
@@ -82,6 +83,10 @@ function LoginForm() {
                       Login
                     </button>
                   </form>
+                  {/* Link to Register Page */}
+                  <p className="mt-3 text-center">
+                    Don't have an account? <Link to={REGISTER}>Register Here</Link>
+                  </p>
                 </div>
               )}
             </div>
