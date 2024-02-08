@@ -30,7 +30,7 @@ const useUpdateQuantityToZero = () => {
       // Query Firestore to find documents with matching name and expiry_date in the "inventory" collection
       const q = query(
         inventoryRef,
-        where('barcode_number', '==', name),
+        where('barcode_number', '==', barcode_number),
         where('expiry_date', '==', expiryTimestamp)
       );
 
