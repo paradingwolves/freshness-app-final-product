@@ -405,7 +405,6 @@ const AddStock = () => {
                 className="form-control"
                 value={matchingItems[0].animal}
                 required
-                disabled
               />
             </div>
           ) : (
