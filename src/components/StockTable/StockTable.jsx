@@ -20,6 +20,8 @@ const StockTable = () => {
     const {user} = useAuth();
 
     const exp90days = addDays(new Date(), 90);
+    const exp60days = addDays(new Date(), 60);
+    const exp30days = addDays(new Date(), 30);
     const exp7days = addDays(new Date(), 7);
     const expToday = addDays(new Date(), 1);
     const today = new Date();
@@ -91,7 +93,11 @@ const StockTable = () => {
 
             switch (selectedFilter) {
             case '90days':
-                return expiryDate <= exp90days && expiryDate > exp7days;
+                return expiryDate <= exp90days && expiryDate > exp60days;
+            case '90days':
+                return expiryDate <= exp60days && expiryDate > exp30days;
+            case '90days':
+                return expiryDate <= exp30days && expiryDate > exp7days;
             case '7days':
                 return expiryDate <= exp7days && !isToday(expiryDate);
             case '1day':
@@ -108,6 +114,8 @@ const StockTable = () => {
     const filterOptions = [
         { label: 'All', value: 'all' },
         { label: 'Expires in 90 Days', value: '90days' },
+        { label: 'Expires in 60 Days', value: '60days' },
+        { label: 'Expires in 30 Days', value: '30days' },
         { label: 'Expires in 7 Days', value: '7days' },
         { label: 'Expires Today', value: '1day' },
         { label: 'Expired', value: 'past' },
@@ -163,6 +171,8 @@ const StockTable = () => {
                     const expiryDate = new Date(product.expiry_date);
                     const today = new Date();
                     const ninetyDaysFromNow = addDays(today, 90);
+                    const sixtyDaysFromNow = addDays(today, 60);
+                    const thirtyDaysFromNow = addDays(today, 30);
                     const oneWeekFromNow = addDays(today, 7);
 
                     if (isBefore(expiryDate, today)) {
@@ -172,7 +182,11 @@ const StockTable = () => {
                     } else if (isBefore(expiryDate, oneWeekFromNow)) {
                         className = 'exp-week';
                     } else if (isBefore(expiryDate, ninetyDaysFromNow)) {
-                        className = 'exp-soon';
+                        className = 'exp-90';
+                    } else if (isBefore(expiryDate, ninetyDaysFromNow)) {
+                        className = 'exp-60';
+                    } else if (isBefore(expiryDate, ninetyDaysFromNow)) {
+                        className = 'exp-30';
                     }
 
                     return (
