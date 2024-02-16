@@ -82,18 +82,10 @@ const StockTable = () => {
         return data
         .filter((product) => {
             const itemNumber = product.item_number.toString();
-            const expiryDate = new Date(product.expiry_date);
-
-            if (datePattern.test(query)) {
-                const formattedQuery = query.split('-').join('/');
-                const formattedExpiryDate = `${expiryDate.getFullYear()}-${expiryDate.getMonth() + 1}-${expiryDate.getDate()}`;
-                return formattedExpiryDate === formattedQuery;
-            }
             return (
-                (numberPattern.test(itemNumber) && itemNumber.includes(query)) ||
-                product.name.toLowerCase().includes(query) ||
-                product.brand.toLowerCase().includes(query) ||
-                product.expiry_date.toLowerCase().includes(query)
+            (numberPattern.test(itemNumber) && itemNumber.includes(query)) ||
+            product.name.toLowerCase().includes(query) ||
+            product.brand.toLowerCase().includes(query)
             );
         })
         .filter((product) => {
