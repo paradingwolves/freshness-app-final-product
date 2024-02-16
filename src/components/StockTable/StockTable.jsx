@@ -181,12 +181,12 @@ const StockTable = () => {
                         className = 'exp-today';
                     } else if (isBefore(expiryDate, oneWeekFromNow)) {
                         className = 'exp-week';
-                    } else if (isBefore(expiryDate, ninetyDaysFromNow)) {
-                        className = 'exp-90';
-                    } else if (isBefore(expiryDate, sixtyDaysFromNow)) {
-                        className = 'exp-60';
                     } else if (isBefore(expiryDate, thirtyDaysFromNow)) {
                         className = 'exp-30';
+                    } else if (isBefore(expiryDate, sixtyDaysFromNow)) {
+                        className = 'exp-60';
+                    } else if (isBefore(expiryDate, ninetyDaysFromNow)) {
+                        className = 'exp-90';
                     }
 
                     return (
