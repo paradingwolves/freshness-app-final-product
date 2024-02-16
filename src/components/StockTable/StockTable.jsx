@@ -92,7 +92,8 @@ const StockTable = () => {
             return (
                 (numberPattern.test(itemNumber) && itemNumber.includes(query)) ||
                 product.name.toLowerCase().includes(query) ||
-                product.brand.toLowerCase().includes(query)
+                product.brand.toLowerCase().includes(query) ||
+                product.expiry_date.toLowerCase().includes(query)
             );
         })
         .filter((product) => {
