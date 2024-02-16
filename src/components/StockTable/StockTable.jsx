@@ -94,9 +94,9 @@ const StockTable = () => {
             switch (selectedFilter) {
             case '90days':
                 return expiryDate <= exp90days && expiryDate > exp60days;
-            case '90days':
+            case '60days':
                 return expiryDate <= exp60days && expiryDate > exp30days;
-            case '90days':
+            case '30days':
                 return expiryDate <= exp30days && expiryDate > exp7days;
             case '7days':
                 return expiryDate <= exp7days && !isToday(expiryDate);
@@ -183,9 +183,9 @@ const StockTable = () => {
                         className = 'exp-week';
                     } else if (isBefore(expiryDate, ninetyDaysFromNow)) {
                         className = 'exp-90';
-                    } else if (isBefore(expiryDate, ninetyDaysFromNow)) {
+                    } else if (isBefore(expiryDate, sixtyDaysFromNow)) {
                         className = 'exp-60';
-                    } else if (isBefore(expiryDate, ninetyDaysFromNow)) {
+                    } else if (isBefore(expiryDate, thirtyDaysFromNow)) {
                         className = 'exp-30';
                     }
 

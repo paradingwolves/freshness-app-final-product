@@ -51,8 +51,8 @@ ul { padding: 0 !important; list-style: none; }
     text-transform: uppercase;
 }
 .list-row:nth-child(even) { background-color: #cfcfcf; }
-.exp-90 { background-color: #9ee39c !important; }
-.list-row.exp-90:nth-child(even) { background-color: #74c178 !important; }
+.exp-90 { background-color: #a8e39c !important; }
+.list-row.exp-90:nth-child(even) { background-color: #86c174 !important; }
 .exp-60 { background-color: #bee39c !important; }
 .list-row.exp-60:nth-child(even) { background-color: #a4c174 !important; }
 .exp-30 { background-color: #e3cf9c !important; }
